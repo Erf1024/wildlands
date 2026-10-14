@@ -1,0 +1,302 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #17251d;
+  color: #f0f2e9;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  display: block;
+  z-index: 0;
+}
+
+#hud {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.brand {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-shadow: 1px 2px 4px #000;
+}
+
+.brand span {
+  color: #a9d17c;
+}
+
+.stats {
+  position: absolute;
+  top: 68px;
+  left: 24px;
+  width: 215px;
+}
+
+.stat {
+  display: grid;
+  grid-template-columns: 65px 1fr 30px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.stat label {
+  letter-spacing: 1px;
+}
+
+.bar {
+  height: 9px;
+  background: #1b211d;
+  border: 1px solid #ffffff44;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 100%;
+  transition: width 0.2s;
+}
+
+.health {
+  background: #d9584d;
+}
+
+.hunger {
+  background: #d5ae4e;
+}
+
+#crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 23px;
+  color: white;
+  text-shadow: 0 1px 3px black;
+}
+
+#resourceMessage {
+  position: absolute;
+  top: 57%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  text-align: center;
+  color: white;
+  text-shadow: 0 2px 4px black;
+}
+
+#hotbar {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+
+.slot {
+  position: relative;
+  width: 65px;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: #111c17cc;
+  border: 1px solid #a7b49b88;
+  font-size: 20px;
+}
+
+.slot.selected {
+  border: 2px solid #c9ed9d;
+  background: #43593dbb;
+}
+
+.slot b {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  font-size: 10px;
+  color: #d5e3c8;
+}
+
+.slot span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#help {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #ffffffc9;
+  font-size: 11px;
+  line-height: 1.8;
+  text-shadow: 0 2px 4px black;
+}
+
+#clock {
+  position: absolute;
+  z-index: 2;
+  top: 23px;
+  right: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px black;
+  pointer-events: none;
+}
+
+#startScreen,
+#inventory {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #101912c9;
+  backdrop-filter: blur(3px);
+}
+
+.panel,
+.inventoryPanel {
+  width: min(90%, 460px);
+  padding: 35px;
+  text-align: center;
+  background: #1b2a20f5;
+  border: 1px solid #789267;
+  box-shadow: 0 12px 45px #0008;
+}
+
+.panel h1 {
+  margin: 0;
+  font-size: 42px;
+  letter-spacing: 6px;
+}
+
+.subtitle {
+  color: #b5dc8b;
+  font-size: 12px;
+  letter-spacing: 5px;
+}
+
+.panel p {
+  color: #d0d8cb;
+  line-height: 1.6;
+}
+
+button {
+  padding: 14px 18px;
+  margin-top: 15px;
+  color: #142013;
+  background: #b8dc91;
+  border: none;
+  font-weight: 900;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d3f2b0;
+}
+
+.small {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.inventoryPanel {
+  text-align: left;
+}
+
+.inventoryPanel h2 {
+  margin-top: 0;
+  letter-spacing: 3px;
+}
+
+.inventoryPanel p {
+  color: #c2d0bd;
+}
+
+.inventoryRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid #ffffff22;
+}
+
+#toast {
+  position: fixed;
+  z-index: 8;
+  left: 50%;
+  bottom: 155px;
+  transform: translateX(-50%);
+  padding: 10px 17px;
+  background: #101912dd;
+  border: 1px solid #8da77a;
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+#toast.visible {
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .brand {
+    font-size: 16px;
+    top: 15px;
+    left: 12px;
+  }
+
+  .stats {
+    top: 50px;
+    left: 12px;
+    width: 195px;
+  }
+
+  #clock {
+    top: 16px;
+    right: 12px;
+    font-size: 10px;
+  }
+
+  .slot {
+    width: 55px;
+    height: 50px;
+  }
+
+  #hotbar {
+    bottom: 82px;
+  }
+
+  #help {
+    font-size: 9px;
+  }
+}
