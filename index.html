@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17251d">
+  <meta name="description" content="Explore, gather, and survive in Wildlands.">
+  <title>Wildlands Survival</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="hud">
+    <div class="brand">WILDLANDS <span>SURVIVAL</span></div>
+
+    <div class="stats">
+      <div class="stat">
+        <label>HEALTH</label>
+        <div class="bar"><div id="healthBar" class="fill health"></div></div>
+        <span id="healthText">100</span>
+      </div>
+      <div class="stat">
+        <label>HUNGER</label>
+        <div class="bar"><div id="hungerBar" class="fill hunger"></div></div>
+        <span id="hungerText">100</span>
+      </div>
+    </div>
+
+    <div id="resourceMessage"></div>
+    <div id="crosshair">+</div>
+
+    <div id="hotbar">
+      <div class="slot selected"> <b>1</b> 🪵 <span id="woodCount">0</span></div>
+      <div class="slot"><b>2</b> 🪨 <span id="stoneCount">0</span></div>
+      <div class="slot"><b>3</b> 🌿 <span id="fiberCount">0</span></div>
+      <div class="slot"><b>4</b> 🫐 <span id="berryCount">0</span></div>
+    </div>
+
+    <div id="help">
+      WASD Move · Mouse Look · Shift Sprint · Space Jump<br>
+      E Gather · F Eat Berries · I Inventory · Esc Pause
+    </div>
+  </div>
+
+  <div id="startScreen">
+    <div class="panel">
+      <h1>WILDLANDS</h1>
+      <p class="subtitle">SURVIVE THE UNKNOWN</p>
+      <p>Explore the forest, collect resources, and survive.</p>
+      <button id="startButton">ENTER THE WILDERNESS</button>
+      <p class="small">Keyboard and mouse recommended.</p>
+    </div>
+  </div>
+
+  <div id="inventory" class="hidden">
+    <div class="inventoryPanel">
+      <h2>INVENTORY</h2>
+      <p>Everything you've collected.</p>
+      <div id="inventoryItems"></div>
+      <button id="closeInventory">CLOSE [I]</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+  <div id="clock">DAY 1 · 08:00</div>
+
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
